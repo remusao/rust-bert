@@ -528,12 +528,16 @@ pub type ZeroShotTemplate = Box<dyn Fn(&str) -> String>;
 
 /// # ZeroShotClassificationModel for Zero Shot Classification
 pub struct ZeroShotClassificationModel {
-    tokenizer: TokenizerOption,
-    zero_shot_classifier: ZeroShotClassificationOption,
-    var_store: VarStore,
+    pub tokenizer: TokenizerOption,
+    pub zero_shot_classifier: ZeroShotClassificationOption,
+    pub var_store: VarStore,
 }
 
 impl ZeroShotClassificationModel {
+    pub fn half(&mut self) {
+        self.var_store.half();
+    }
+
     /// Build a new `ZeroShotClassificationModel`
     ///
     /// # Arguments
